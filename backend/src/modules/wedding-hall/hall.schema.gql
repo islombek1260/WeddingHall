@@ -1,0 +1,29 @@
+scalar Any
+
+type Hall {
+    _id: ID!
+    hallname: String!
+    address: String!
+    price: String!
+    orderDays: [String]
+    admin: ID!
+}
+
+type Query {
+    halls: [Hall]!
+    hall(_id: ID!): Hall
+}
+
+type Mutation {
+    createHall(hallname: String!, address: String!, price: String!): Response
+    updateHall(hallname: String, address: String, price: String, orderDays: [String]): Response
+    createOrder(orderDays: [String]): Response
+    deleteHall: Response
+}
+
+type Response {
+    success: Boolean
+    data: Any,
+    access_token: String
+}
+
